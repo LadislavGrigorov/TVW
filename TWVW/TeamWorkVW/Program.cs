@@ -11,8 +11,7 @@
         private static void Main()
         {
             Console.WriteLine("Hello world!");
-            Console.WriteLine("Hi there");
-            Console.WriteLine("test");
+           
         }
     }
 }
