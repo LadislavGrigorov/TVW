@@ -12,6 +12,7 @@ namespace TeamWorkVW
         {
             Console.WriteLine("Hello world!");
             Console.WriteLine("Hi there");
+            Console.WriteLine("test");
         }
     }
 }
