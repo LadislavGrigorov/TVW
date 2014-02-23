@@ -2,10 +2,8 @@
 {
     public interface IMovable
     {
-        ItemPosition Position {get; set;}
+        ItemPosition Position { get; }
 
-        int Speed { get; set; }
-
-        void Move();
+        void Move( int x, int y);
     }
 }
