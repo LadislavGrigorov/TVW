@@ -1,7 +1,7 @@
 ﻿namespace TankWars.Common
 {
     using System;
-    public abstract class Machine
+    public abstract class Machine : IMovable
     {
         private string name;
 
@@ -34,5 +34,24 @@
         public int Health { get; set; }
 
 
+
+        public ItemPosition Position { get; set; }
+
+        public int Speed
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void Move()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

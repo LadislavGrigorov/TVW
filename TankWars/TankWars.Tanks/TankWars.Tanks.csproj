@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IInvisible.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="ISwim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

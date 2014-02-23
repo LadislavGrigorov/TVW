@@ -1,4 +1,4 @@
-﻿namespace TankWars.Common
+﻿namespace TankWars.Tanks
 {
     interface IInvisible
     {
