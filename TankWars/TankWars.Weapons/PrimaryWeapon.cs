@@ -1,6 +1,7 @@
 ﻿namespace TankWars.Weapons
 {
     using System;
+    using System.Collections.Generic;
     public abstract class PrimaryWeapon : Weapon
     {
         int shootSpeed;
@@ -22,7 +23,7 @@
             }
         }
 
-        public void Shoot()
+        public IEnumerable<Bullet> Shoot()
         {
             //create bullets with the weapon damage, speed and coords of the tank/machine
             throw new NotImplementedException("Shoot not implemented!");

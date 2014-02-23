@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TankWars.Weapons
+﻿namespace TankWars.Weapons
 {
+    using System;
+    using System.Collections.Generic;
+
     public abstract class SecondaryWeapon : Weapon
     {
         int charges;
@@ -26,10 +23,11 @@ namespace TankWars.Weapons
                 this.charges = value;
             }
         }
-        public void Shoot()
+        public IEnumerable<Bullet> Shoot()
         {
             //if charges > 0 shoot else do nothing
             //create bullets with the weapon damage, speed and coords of the tank/machine
+            throw new NotImplementedException();
         }
 
     }

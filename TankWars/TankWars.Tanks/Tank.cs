@@ -1,7 +1,10 @@
 ﻿namespace TankWars.Tanks
 {
     using System;
+    using System.Collections.Generic;
     using TankWars.Common;
+    using TankWars.Weapons;
+
     public abstract class Tank : Machine
     {
         protected int totalDemage;
@@ -22,6 +25,11 @@
             this.Armour = initialArmour;
         }
 
+        public PrimaryWeapon PrimaryGun { get; protected set;}
+
+        public SecondaryWeapon SpecialGun { get; protected set; }
+
+
         public TankModeEnum Mode
         {
             get
@@ -37,7 +45,32 @@
             }
         }
 
+        // shoot with primary gun
+        public IEnumerable <Bullet> ShootPrimaryGum()
+        {
+            return this.PrimaryGun.Shoot();
+        }
 
+        // shoot with special gun
+        public IEnumerable<Bullet> ShootSpecialGum()
+        {
+            return this.SpecialGun.Shoot();
+        }
+
+        // primary gun does not take any energy but still needs to recharge.
+        public void RechargePrimaryWeapon()
+        {
+            throw new NotImplementedException();
+        }
+
+        // this method will recharge the SpecualGun аnd will take some of the tank's energy.
+        // Can be overrrided by every tank
+        public virtual void RechargeSecondaryWeapon()
+        {
+            this.Energy -= (initialEnergy / 10);
+        }
+
+        // this method should calculate total demage of tank
         protected void CalculateTotalDemage()
         {
             throw new NotImplementedException();
