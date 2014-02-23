@@ -36,7 +36,7 @@
             }
         }
 
-        // adds durability to the machine. Lessons the demage take by other units.
+        // adds durability to the machine. Reduce the damage taken by other units.
         public int Armour
         {
             get
