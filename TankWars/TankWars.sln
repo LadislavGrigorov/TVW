@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankWars", "TankWarsMain\TankWars.csproj", "{B5C44AF7-F0A7-43A6-9BA8-5DB3C4703EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankWars.Tanks", "TankWars.Tanks\TankWars.Tanks.csproj", "{F0B34146-DC7D-4320-822C-91D1101FEF7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankWars.Common", "TankWars.GameEngine\TankWars.Common.csproj", "{7CB00B1B-CF91-4A0F-8741-B3BA5918AF7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankWars.Player", "TankWars.Player\TankWars.Player.csproj", "{4C3D3C43-5DEE-4727-AC07-6FD77A5DAB06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankWars.Units", "TankWars.Units\TankWars.Units.csproj", "{D1B3FAC5-4273-4747-8F08-48A7A69294CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5C44AF7-F0A7-43A6-9BA8-5DB3C4703EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C44AF7-F0A7-43A6-9BA8-5DB3C4703EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C44AF7-F0A7-43A6-9BA8-5DB3C4703EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C44AF7-F0A7-43A6-9BA8-5DB3C4703EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0B34146-DC7D-4320-822C-91D1101FEF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0B34146-DC7D-4320-822C-91D1101FEF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0B34146-DC7D-4320-822C-91D1101FEF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B34146-DC7D-4320-822C-91D1101FEF7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB00B1B-CF91-4A0F-8741-B3BA5918AF7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB00B1B-CF91-4A0F-8741-B3BA5918AF7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB00B1B-CF91-4A0F-8741-B3BA5918AF7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB00B1B-CF91-4A0F-8741-B3BA5918AF7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3D3C43-5DEE-4727-AC07-6FD77A5DAB06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3D3C43-5DEE-4727-AC07-6FD77A5DAB06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3D3C43-5DEE-4727-AC07-6FD77A5DAB06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3D3C43-5DEE-4727-AC07-6FD77A5DAB06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B3FAC5-4273-4747-8F08-48A7A69294CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B3FAC5-4273-4747-8F08-48A7A69294CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B3FAC5-4273-4747-8F08-48A7A69294CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B3FAC5-4273-4747-8F08-48A7A69294CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
