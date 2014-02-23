@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamWorkVW", "TeamWorkVW\TeamWorkVW.csproj", "{440F2A37-0A7B-4C92-B145-959EC8B3D8EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamWork", "Inavadors\TeamWork.csproj", "{27873F1A-A988-424F-BBAA-5E291CFB2A30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{440F2A37-0A7B-4C92-B145-959EC8B3D8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{440F2A37-0A7B-4C92-B145-959EC8B3D8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{440F2A37-0A7B-4C92-B145-959EC8B3D8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27873F1A-A988-424F-BBAA-5E291CFB2A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27873F1A-A988-424F-BBAA-5E291CFB2A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27873F1A-A988-424F-BBAA-5E291CFB2A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27873F1A-A988-424F-BBAA-5E291CFB2A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
