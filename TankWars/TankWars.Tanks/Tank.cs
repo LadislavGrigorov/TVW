@@ -22,9 +22,9 @@
             this.Armour = InitialArmour;
         }
 
-        public int InitialEnergy { get; private set; }
-        public int initialHealth { get; private set; }
-        public int InitialArmour { get; private set; }
+        public int InitialEnergy { get; protected set; }
+        public int initialHealth { get; protected set; }
+        public int InitialArmour { get; protected set; }
 
         public PrimaryWeapon PrimaryGun { get; protected set;}
 

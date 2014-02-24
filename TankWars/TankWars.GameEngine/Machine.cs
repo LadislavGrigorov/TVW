@@ -17,7 +17,7 @@
             this.Position = position;
         }
 
-        public ItemPosition Position { get;  protected set; }
+        public ItemPosition Position { get; set; }
 
         public string Name
         {
@@ -91,10 +91,15 @@
         }
 
         // each machine implements it own speed
-        public abstract int Speed { get; set; }
+        public abstract int Speed { get; protected set; }
 
         // each machine determines how it moves
-        public abstract void Move(int x, int y);
+        public virtual void Move(int x, int y)
+        {
+            // does not compile structure cannot be modified. Should be fixed.
+            //this.Position.X += x;
+            //this.Position.Y += y;
+        }
 
     }
 }

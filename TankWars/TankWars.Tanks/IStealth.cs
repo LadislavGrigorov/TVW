@@ -2,7 +2,7 @@
 {
     interface IStealth
     {
-        bool IsInvisible { get; }
+        bool IsInvisible { get; set; }
 
         int InvisibilityDuration { get; }
 

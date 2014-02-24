@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeavyDutyTank.cs" />
     <Compile Include="IStealth.cs" />
+    <Compile Include="StealthTank.cs" />
+    <Compile Include="SwinTank.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="ISwim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
