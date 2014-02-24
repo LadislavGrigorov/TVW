@@ -7,7 +7,7 @@
 
     public class StealthTank : Tank, IStealth
     {
-        // Heavy Tank with slow speed, a lot of armour, a lot of energy. Cannot swim and cannot have stealth mode.
+        // Stealth Tank with high speed, armour, normal energy. Cannot swim but it is fast and can be invisible for a period.
         private const int SPEED = 70;
         private const int ARMOUR = 100;
         private const int HEALTH = 700;
