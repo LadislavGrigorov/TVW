@@ -16,7 +16,7 @@ namespace TeamWork
         public static ConsoleKey MoveRight = ConsoleKey.RightArrow;
         public static ConsoleKey Shoot = ConsoleKey.Spacebar;
         public static ConsoleKey Pause = ConsoleKey.P;
-        public static int playerTotalScore = 0;
+        public static int Score = 0;
         public static int time = 0;
         public static int maxShots = 5;
         public static int level = 0;
@@ -32,7 +32,7 @@ namespace TeamWork
             
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("starwars.wav");
             player.PlayLooping();
-            System.Threading.Thread.Sleep(5000);
+            //System.Threading.Thread.Sleep(5000);
 
             PartEmitter.Initializing();
 
@@ -101,7 +101,7 @@ namespace TeamWork
                         return;
                     }
                     Shot shot = new Shot(new int[] { PartEmitter.player.LefttopPosition[0] + 2, PartEmitter.player.LefttopPosition[1] },
-                                         new int[] { 0, -1 }, 1, ConsoleColor.Cyan, 100);
+                                         new int[] { 0, -1 }, 1, ConsoleColor.Green, 100);
                     System.Media.SoundPlayer playerShoot = new System.Media.SoundPlayer("blaster.wav");
                     playerShoot.Play();
                     shots.Add(shot);
@@ -110,38 +110,44 @@ namespace TeamWork
         }
         public static void InvadorsMove()
         {
-                    Console.Clear();
+            Console.Clear();
 
-                    var invadors = parts.FindAll(x => (x.LefttopPosition[0] == 0 || x.LefttopPosition[0] == Console.BufferWidth - 3));
-                    if (invadors.Count > 0)
-                    {
-                        foreach (var item in parts)
-                        {
-                            if (item is Invador)
-                            {
-                                item.MoveDirection[0] *= -1;
-                                item.LefttopPosition[1] += 1;
-                            }
-                        }
-                    }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(2, 2);
+            Console.WriteLine("SCORE: {0}", Score);
+            Console.SetCursorPosition(45, 2);
+            Console.WriteLine("T H E   I N V A D O R S");
 
-                    foreach (var item in parts)
+            var invadors = parts.FindAll(x => (x.LefttopPosition[0] == 0 || x.LefttopPosition[0] == Console.BufferWidth - 3));
+            if (invadors.Count > 0)
+            {
+                foreach (var item in parts)
+                {
+                    if (item is Invador)
                     {
-                        if (item is Invador)
-                        {
-                            if (item.LefttopPosition[1] >= 1 && item.LefttopPosition[1] <= 14) item.PartColor = ConsoleColor.Blue;
-                            if (item.LefttopPosition[1] >= 15 && item.LefttopPosition[1] <= 25) item.PartColor = ConsoleColor.Yellow;
-                            if (item.LefttopPosition[1] >= 26) item.PartColor = ConsoleColor.Red;
-                        }
-                    }
-                    
-                    var printable = parts.FindAll((x) => (x.Life > 0));
-                    foreach (var item in printable)
-                    {
-                        item.Move();
-                        item.Draw();
+                        item.MoveDirection[0] *= -1;
+                        item.LefttopPosition[1] += 1;
                     }
                 }
+            }
+
+            foreach (var item in parts)
+            {
+                if (item is Invador)
+                {
+                    if (item.LefttopPosition[1] >= 1 && item.LefttopPosition[1] <= 14) item.PartColor = ConsoleColor.Blue;
+                    if (item.LefttopPosition[1] >= 15 && item.LefttopPosition[1] <= 25) item.PartColor = ConsoleColor.Yellow;
+                    if (item.LefttopPosition[1] >= 26) item.PartColor = ConsoleColor.Red;
+                }
+            }
+                    
+            var printable = parts.FindAll((x) => (x.Life > 0));
+            foreach (var item in printable)
+            {
+                item.Move();
+                item.Draw();
+            }
+        }
         public static void PlayerMove()
         {
             PartEmitter.player.Clear();
@@ -176,7 +182,7 @@ namespace TeamWork
                             shots[i].Life -= 100;
                             System.Media.SoundPlayer playerHit = new System.Media.SoundPlayer("burst.wav");
                             playerHit.Play();
-
+                            Score += 50;
                         }
                     }
                 }
