@@ -11,47 +11,95 @@
 
         private int health;
 
-        public Machine(string name, int armour, int energy, int health, ItemPosition position)
+        public Machine(string name, ItemPosition position)
         {
             this.Name = name;
-            this.Armour = armour;
-            this.Energy = energy;
-            this.Health = health;
-            this.Postition = position;
+            this.Position = position;
         }
-
-        public ItemPosition Postition { get; set; }
-
-        public string Name { get; protected set; }
-
-        // adds durability to the machine. Lessons the demage take by other units.
-        public int Armour { get; set; }
-
-        // determines how fast the machine can shoot or move.
-        public int Energy { get; set; }
-
-        // machine dies when health reaches 0.
-        public int Health { get; set; }
-
-
 
         public ItemPosition Position { get; set; }
 
-        public int Speed
+        public string Name
         {
             get
             {
-                throw new NotImplementedException();
+                return this.name;
             }
             set
             {
-                throw new NotImplementedException();
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Name of Machine cannot be empty!");
+                }
+
+                this.name = value;
             }
         }
 
-        public void Move()
+        // adds durability to the machine. Reduce the damage taken by other units.
+        public int Armour
         {
-            throw new NotImplementedException();
+            get
+            {
+                return this.armour;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Machine armour cannot be negative number!");
+                }
+
+                this.armour = value;
+            }
         }
+
+        // determines how fast the machine can shoot or move.
+        public int Energy 
+        {
+            get
+            {
+                return this.energy;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Machine energy cannot be negative number!");
+                }
+
+                this.energy = value;
+            }
+        }
+
+        // machine dies when health reaches 0.
+        public int Health
+        {
+            get
+            {
+                return this.health;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Machine health cannot be negative number!");
+                }
+
+                this.health = value;
+            }
+        }
+
+        // each machine implements it own speed
+        public abstract int Speed { get; protected set; }
+
+        // each machine determines how it moves
+        public virtual void Move(int x, int y)
+        {
+            // does not compile structure cannot be modified. Should be fixed.
+            //this.Position.X += x;
+            //this.Position.Y += y;
+        }
+
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace TankWars.Tanks
 {
-    interface IInvisible
+    interface IStealth
     {
         bool IsInvisible { get; set; }
 
-        int InvisibilityDuration { get; set; }
+        int InvisibilityDuration { get; }
 
     }
 }

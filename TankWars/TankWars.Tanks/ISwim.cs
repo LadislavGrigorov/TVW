@@ -5,7 +5,7 @@
     {
         bool IsSwimming { get; set; }
 
-        int SwimSpeed { get; set; }
+        int SwimSpeed { get; }
 
         int OxigenLevel { get; set; }
     }
