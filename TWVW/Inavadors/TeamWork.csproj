@@ -44,7 +44,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="GamePart.cs" />
     <Compile Include="IDrawable.cs" />
-    <Compile Include="Invadors.cs" />
+    <Compile Include="Invaders.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="PartEmitter.cs" />
     <Compile Include="Player.cs" />

@@ -116,7 +116,7 @@ namespace TeamWork
             Console.SetCursorPosition(2, 2);
             Console.WriteLine("SCORE: {0}", Score);
             Console.SetCursorPosition(45, 2);
-            Console.WriteLine("T H E   I N V A D O R S");
+            Console.WriteLine("T H E   I N V A D E R S");
 
             var invadors = parts.FindAll(x => (x.LefttopPosition[0] == 0 || x.LefttopPosition[0] == Console.BufferWidth - 3));
             if (invadors.Count > 0)
