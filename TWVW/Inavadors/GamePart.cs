@@ -116,5 +116,20 @@ namespace TeamWork
             LefttopPosition[0] += MoveDirection[0];
             LefttopPosition[1] += MoveDirection[1];
         }
+
+        public void Clear()
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.SetCursorPosition(LefttopPosition[0], LefttopPosition[1]);
+            for (int i = 0; i < shape.GetLength(0); i++)
+            {
+                for (int g = 0; g < shape.GetLength(1); g++)
+                {
+                    Console.SetCursorPosition(LefttopPosition[0] + g, LefttopPosition[1] + i);
+                    if (shape[i, g] != ' ') Console.Write(shape[i, g]);
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
+        }
     }
 }

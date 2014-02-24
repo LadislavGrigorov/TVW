@@ -45,7 +45,6 @@
     <Compile Include="GamePart.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="Invadors.cs" />
-    <Compile Include="IParishable.cs" />
     <Compile Include="Obstacle.cs" />
     <Compile Include="PartEmitter.cs" />
     <Compile Include="Player.cs" />

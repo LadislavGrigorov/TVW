@@ -9,7 +9,7 @@ namespace TeamWork
     class Engine
     {
         public static List<GamePart> parts = new List<GamePart>();
-        public static Queue<Shot> shots = new Queue<Shot>();
+        public static List<Shot> shots = new List<Shot>();
 
         public static int GameSpeed = 50;
         public static ConsoleKey MoveLeft = ConsoleKey.LeftArrow;
@@ -29,23 +29,89 @@ namespace TeamWork
             Console.BufferWidth = Console.WindowWidth;
             Console.CursorVisible = false;
             Console.Title = "INVADORS";
-
+            
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("starwars.wav");
+            player.PlayLooping();
+            System.Threading.Thread.Sleep(5000);
 
             PartEmitter.Initializing();
 
             while (true)
             {
                 ReadConsoleKeys();
-
-                //ProcessShots();
-
-                //ProcessEnemies();
-
-                //PrintShots();
                 time++;
-                if (time % 5 == 0)
+
+                if (time % 6 == 0) InvadorsMove();
+                if (time % 2 == 0) PlayerMove();
+                ShotsMove();
+                CollisionExecution();
+                System.Threading.Thread.Sleep(GameSpeed);
+            }
+        }
+
+        public static void ReadConsoleKeys()
+        {
+            if (Console.KeyAvailable)
+            {
+                
+                ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+                while (Console.KeyAvailable)
                 {
+                    Console.ReadKey(true);
+                }
+                if (pressedKey.Key == Pause)
+                {
+                    Console.SetCursorPosition(43, 32);
+                    Console.WriteLine("Game Paused. Press 'P' to resume.");
+                    while (true)
+                    {
+                        if (Console.KeyAvailable)
+                        {
+                            pressedKey = Console.ReadKey(true);
+                            if (pressedKey.Key == ConsoleKey.P)
+                            {
+                                Console.SetCursorPosition(43, 32);
+                                Console.WriteLine("                                 ");
+                                return;
+                            }
+                        }
+                    }
+                }
+                else if (pressedKey.Key == MoveLeft)
+                {
+                    if (PartEmitter.player.LefttopPosition[0] == 0)
+                    {
+                        return;
+                    }
+
+                    PartEmitter.player.LefttopPosition[0] -= 1;
+                }
+                else if (pressedKey.Key == MoveRight)
+                {
+                    if (PartEmitter.player.LefttopPosition[0] == Console.BufferWidth - 5)
+                    {
+                        return;
+                    }
+                    PartEmitter.player.LefttopPosition[0] += 1;
+                }
+                else if (pressedKey.Key == Shoot)
+                {
+                    if (shots.Count > 10)
+                    {
+                        return;
+                    }
+                    Shot shot = new Shot(new int[] { PartEmitter.player.LefttopPosition[0] + 2, PartEmitter.player.LefttopPosition[1] },
+                                         new int[] { 0, -1 }, 1, ConsoleColor.Cyan, 100);
+                    System.Media.SoundPlayer playerShoot = new System.Media.SoundPlayer("blaster.wav");
+                    playerShoot.Play();
+                    shots.Add(shot);
+                }
+            }
+        }
+        public static void InvadorsMove()
+        {
                     Console.Clear();
+
                     var invadors = parts.FindAll(x => (x.LefttopPosition[0] == 0 || x.LefttopPosition[0] == Console.BufferWidth - 3));
                     if (invadors.Count > 0)
                     {
@@ -68,7 +134,7 @@ namespace TeamWork
                             if (item.LefttopPosition[1] >= 26) item.PartColor = ConsoleColor.Red;
                         }
                     }
-
+                    
                     var printable = parts.FindAll((x) => (x.Life > 0));
                     foreach (var item in printable)
                     {
@@ -76,80 +142,68 @@ namespace TeamWork
                         item.Draw();
                     }
                 }
-                if (time % 2 == 0)
-                {
-                    PartEmitter.player.Clear();
-                    PartEmitter.player.Draw();
-                }
+        public static void PlayerMove()
+        {
+            PartEmitter.player.Clear();
+            PartEmitter.player.Move();
+            PartEmitter.player.Draw();
+        }
+        public static void ShotsMove()
+        {
+            for (int i = 0; i < shots.Count; i++)
+			{
+                if (shots[i].LefttopPosition[1] == 0) shots.RemoveAt(i);
+			}
 
-                if (shots.Count > 0 && shots.Peek().LefttopPosition[1] == 0) shots.Dequeue();
-                foreach (var item in shots)
-                {
-                    item.Move();
-                    item.Draw();
-                }
-                System.Threading.Thread.Sleep(GameSpeed);
+            foreach (var item in shots)
+            {
+                if (item.Life > 0) item.Clear();
+                item.Move();
+                if(item.Life > 0 )item.Draw();
             }
         }
-
-        public static void ReadConsoleKeys()
+        public static void CollisionExecution()
         {
-            if (Console.KeyAvailable)
+            for (int i = 0; i < shots.Count; i++)
             {
-                ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-                while (Console.KeyAvailable)
+                for (int g = 0; g < parts.Count; g++)
                 {
-                    Console.ReadKey(true);
-                }
-                if (pressedKey.Key == Pause)
-                {
-                    Console.Beep(3000, 1);
-                    Console.SetCursorPosition(43, 32);
-                    Console.WriteLine("Game Paused. Press 'P' to resume.");
-                    while (true)
+                    for (int k = 0; k < parts[g].Shape.GetLength(1); k++)
                     {
-                        if (Console.KeyAvailable)
+                        if ((parts[g] is Invador) && (shots[i].Life >0 && parts[g].Life>0) && (shots[i].LefttopPosition[0] == parts[g].LefttopPosition[0]+k) && (shots[i].LefttopPosition[1] == parts[g].LefttopPosition[1]))
                         {
-                            pressedKey = Console.ReadKey(true);
-                            if (pressedKey.Key == ConsoleKey.P)
-                            {
-                                Console.SetCursorPosition(43, 32);
-                                Console.WriteLine("                                 ");
-                                Console.Beep(3000, 1);
-                                return;
-                            }
+                            parts[g].Life -= 100;
+                            shots[i].Life -= 100;
+                            System.Media.SoundPlayer playerHit = new System.Media.SoundPlayer("burst.wav");
+                            playerHit.Play();
+
                         }
                     }
                 }
-                else if (pressedKey.Key == MoveLeft)
-                {
-                    if (PartEmitter.player.LefttopPosition[0] == 0)
-                    {
-                        return;
-                    }
+            }
 
-                    Console.Beep(300, 1);
-                    PartEmitter.player.LefttopPosition[0] -= 1;
-                }
-                else if (pressedKey.Key == MoveRight)
+            for (int i = 0; i < shots.Count; i++)
+            {
+                for (int g = 0; g < parts.Count; g++)
                 {
-                    if (PartEmitter.player.LefttopPosition[0] == Console.BufferWidth - 5)
+                    if(parts[g] is Obstacle && shots[i].Life > 0)
                     {
-                        return;
+                        for (int k = 0; k < parts[g].Shape.GetLength(0); k++)
+                        {
+                            for (int l = 0; l < parts[g].Shape.GetLength(1); l++)
+                            {
+                                if (shots[i].LefttopPosition[0] == parts[g].LefttopPosition[0] + l &&
+                                    shots[i].LefttopPosition[1] == parts[g].LefttopPosition[1] - k &&
+                                    parts[g].Shape[0+k, 0+l] != ' ')
+                                {
+                                    shots[i].Life -= 100;
+                                    parts[g].Shape[0 + k, 0 + l] = ' ';
+                                    System.Media.SoundPlayer playerHit = new System.Media.SoundPlayer("stun.wav");
+                                    playerHit.Play();
+                                }
+                            }
+                        }
                     }
-                    Console.Beep(300, 1);
-                    PartEmitter.player.LefttopPosition[0] += 1;
-                }
-                else if (pressedKey.Key == Shoot)
-                {
-                    if (shots.Count > 4)
-                    {
-                        return;
-                    }
-                    Console.Beep(300, 1);
-                    Shot shot = new Shot(new int[] { PartEmitter.player.LefttopPosition[0] + 2, PartEmitter.player.LefttopPosition[1] },
-                                         new int[] { 0, -1 }, 1, ConsoleColor.Cyan, 100);
-                    shots.Enqueue(shot);
                 }
             }
         }
