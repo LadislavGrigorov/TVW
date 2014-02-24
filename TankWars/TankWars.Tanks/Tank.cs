@@ -7,10 +7,7 @@
 
     public abstract class Tank : Machine
     {
-        protected int totalDemage;
-        protected int initialEnergy;
-        protected int initialHealth;
-        protected int initialArmour;
+        private int totalDemage;
          
         // Default is Attack mode where tank can move and shoot. 
         // Defence mode means tank cannot shoot, but gets extra armour.
@@ -20,10 +17,14 @@
             : base(name, position)
         {
             this.Mode = TankModeEnum.Attack;
-            this.Energy = initialEnergy;
+            this.Energy = InitialEnergy;
             this.Health = initialHealth;
-            this.Armour = initialArmour;
+            this.Armour = InitialArmour;
         }
+
+        public int InitialEnergy { get; private set; }
+        public int initialHealth { get; private set; }
+        public int InitialArmour { get; private set; }
 
         public PrimaryWeapon PrimaryGun { get; protected set;}
 
@@ -38,7 +39,7 @@
             }
             set
             {
-                if (this.Energy > (initialEnergy / 5))   // cannot change tank mode if energy is below 20%
+                if (this.Energy > (InitialEnergy / 5))   // cannot change tank mode if energy is below 20%
                 {
                     this.mode = value;
                 }
@@ -67,7 +68,7 @@
         // Can be overrrided by every tank
         public virtual void RechargeSecondaryWeapon()
         {
-            this.Energy -= (initialEnergy / 10);
+            this.Energy -= (InitialEnergy / 5);
         }
 
         // this method should calculate total demage of tank
