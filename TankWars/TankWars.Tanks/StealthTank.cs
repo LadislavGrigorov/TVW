@@ -26,8 +26,7 @@
             this.Energy = InitialEnergy;
             this.Health = initialHealth;
             this.Armour = InitialArmour;
-            // TODO: Inicialize guns
-
+            // TODO: Inicialize guns here
         }
 
         public override int Speed { get; protected set; }
