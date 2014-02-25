@@ -46,7 +46,6 @@
     <Compile Include="Minigun.cs" />
     <Compile Include="OneShot.cs" />
     <Compile Include="PrimaryWeapon.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondaryWeapon.cs" />
     <Compile Include="SuperShot.cs" />
