@@ -5,6 +5,8 @@
     {
         private string name;
 
+        private ItemPosition position;
+
         private int armour;
 
         private int energy;
@@ -14,10 +16,17 @@
         public Machine(string name, ItemPosition position)
         {
             this.Name = name;
-            this.Position = position;
+            this.position = position;
         }
 
-        public ItemPosition Position { get; set; }
+        public ItemPosition Position
+        {
+            get
+            {
+                return this.position;
+            }
+            
+        }
 
         public string Name
         {
@@ -55,7 +64,7 @@
         }
 
         // determines how fast the machine can shoot or move.
-        public int Energy 
+        public int Energy
         {
             get
             {
@@ -93,12 +102,12 @@
         // each machine implements it own speed
         public abstract int Speed { get; protected set; }
 
-        // each machine determines how it moves
+        // machine changes position oly with this method.
         public virtual void Move(int x, int y)
         {
-            // does not compile structure cannot be modified. Should be fixed.
-            //this.Position.X += x;
-            //this.Position.Y += y;
+            this.position.X += x;
+            this.position.Y += y;
+            //this.Position = new ItemPosition(this.Position.X + x, this.Position.Y + y);   //Optional if property Set is used.
         }
 
     }

@@ -23,8 +23,10 @@
             this.Speed = SPEED;
             this.IsInvisible = false;
             this.InvisibilityDuration = INVISIBILITY_DURATION;
-            // TODO: Inicialize guns
-
+            this.Energy = InitialEnergy;
+            this.Health = initialHealth;
+            this.Armour = InitialArmour;
+            // TODO: Inicialize guns here
         }
 
         public override int Speed { get; protected set; }

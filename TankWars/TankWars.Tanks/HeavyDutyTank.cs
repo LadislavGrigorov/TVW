@@ -20,6 +20,9 @@
             this.InitialEnergy = ENERGY;
             this.initialHealth = HEALTH;
             this.Speed = SPEED;
+            this.Energy = InitialEnergy;
+            this.Health = initialHealth;
+            this.Armour = InitialArmour;
             // TODO: Inicialize guns
 
         }

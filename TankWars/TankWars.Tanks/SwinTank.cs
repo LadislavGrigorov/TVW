@@ -27,6 +27,9 @@
             this.SwimSpeed = SWIM_SPEED;
             this.IsSwimming = false;
             this.OxigenLevel = MAX_OXIGEN;
+            this.Energy = InitialEnergy;
+            this.Health = initialHealth;
+            this.Armour = InitialArmour;
             // TODO: Inicialize guns
 
         }

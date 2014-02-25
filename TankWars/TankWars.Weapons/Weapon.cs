@@ -11,7 +11,7 @@
             this.ShootSpeed = shootSpeed;
         }
 
-
+        // weapon demage
         public int Damage
         {
             get { return this.damage; }

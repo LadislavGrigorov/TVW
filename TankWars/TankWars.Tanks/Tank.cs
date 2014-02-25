@@ -7,7 +7,6 @@
 
     public abstract class Tank : Machine
     {
-        private int totalDemage;
          
         // Default is Attack mode where tank can move and shoot. 
         // Defence mode means tank cannot shoot, but gets extra armour.
@@ -17,13 +16,12 @@
             : base(name, position)
         {
             this.Mode = TankModeEnum.Attack;
-            this.Energy = InitialEnergy;
-            this.Health = initialHealth;
-            this.Armour = InitialArmour;
         }
 
         public int InitialEnergy { get; protected set; }
+
         public int initialHealth { get; protected set; }
+
         public int InitialArmour { get; protected set; }
 
         public PrimaryWeapon PrimaryGun { get; protected set;}
@@ -72,9 +70,9 @@
         }
 
         // this method should calculate total demage of tank
-        protected void CalculateTotalDemage()
+        public int CalculateTotalDemage()
         {
-            throw new NotImplementedException();
+            return this.PrimaryGun.Damage + this.SpecialGun.Damage;
         }
     }
 }
