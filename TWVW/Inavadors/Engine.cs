@@ -111,6 +111,7 @@ namespace TeamWork
         public static void InvadorsMove()
         {
             Console.Clear();
+            PartEmitter.player.Draw();
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(2, 2);
