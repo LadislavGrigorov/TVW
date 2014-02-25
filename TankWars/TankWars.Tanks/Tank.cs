@@ -12,17 +12,18 @@
         // Defence mode means tank cannot shoot, but gets extra armour.
         private TankModeEnum mode;
 
-        public Tank (string name, ItemPosition position)
+        public Tank (string name, ItemPosition position, int armour, int energy, int health, int speed)
             : base(name, position)
         {
             this.Mode = TankModeEnum.Attack;
+            this.InitialEnergy = energy;
+            this.Armour = armour;
+            this.Energy = this.InitialEnergy;
+            this.Health = health;
+            this.Speed = speed;
         }
 
         public int InitialEnergy { get; protected set; }
-
-        public int initialHealth { get; protected set; }
-
-        public int InitialArmour { get; protected set; }
 
         public PrimaryWeapon PrimaryGun { get; protected set;}
 

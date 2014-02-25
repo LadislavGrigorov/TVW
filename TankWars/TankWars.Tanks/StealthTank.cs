@@ -12,21 +12,16 @@
         private const int ARMOUR = 100;
         private const int HEALTH = 700;
         private const int ENERGY = 400;
-        private const int INVISIBILITY_DURATION= 5;
+        private const int INVISIBILITY_DURATION = 5;
 
         public StealthTank(string name, ItemPosition position)
-            : base(name, position)
+            : base(name, position, ARMOUR, ENERGY, HEALTH, SPEED)
         {
-            this.InitialArmour = ARMOUR;
-            this.InitialEnergy = ENERGY;
-            this.initialHealth = HEALTH;
-            this.Speed = SPEED;
             this.IsInvisible = false;
             this.InvisibilityDuration = INVISIBILITY_DURATION;
             this.Energy = InitialEnergy;
-            this.Health = initialHealth;
-            this.Armour = InitialArmour;
-            // TODO: Inicialize guns here
+            //TODO: Initialize guns
+
         }
 
         public override int Speed { get; protected set; }
@@ -35,6 +30,6 @@
 
         public int InvisibilityDuration { get; private set; }
 
-        
+
     }
 }

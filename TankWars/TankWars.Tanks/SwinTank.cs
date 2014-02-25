@@ -18,20 +18,12 @@
         private int oxigenLevel;
 
         public SwinTank(string name, ItemPosition position)
-            : base(name, position)
+            : base(name, position, ARMOUR, ENERGY, HEALTH, SPEED)
         {
-            this.InitialArmour = ARMOUR;
-            this.InitialEnergy = ENERGY;
-            this.initialHealth = HEALTH;
-            this.Speed = SPEED;
             this.SwimSpeed = SWIM_SPEED;
             this.IsSwimming = false;
             this.OxigenLevel = MAX_OXIGEN;
-            this.Energy = InitialEnergy;
-            this.Health = initialHealth;
-            this.Armour = InitialArmour;
-            // TODO: Inicialize guns
-
+            //TODO: Initialize guns
         }
 
         public override int Speed { get; protected set; }
