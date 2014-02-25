@@ -3,9 +3,11 @@
     using System;
     using System.Collections.Generic;
 
-    public abstract class SecondaryWeapon : Weapon
+    public class SecondaryWeapon : Weapon
     {
         int charges;
+        private static readonly SecondaryWeapon supergun = new SecondaryWeapon(25, 5);
+        private static readonly SecondaryWeapon megagun = new SecondaryWeapon(40, 5);
         public SecondaryWeapon(int damage, int charges)
             : base(damage)
         {
@@ -21,6 +23,22 @@
             set
             {
                 this.charges = value;
+            }
+        }
+
+        public SecondaryWeapon Supergun
+        {
+            get
+            {
+                return Supergun;
+            }
+        }
+
+        public SecondaryWeapon Megagun
+        {
+            get
+            {
+                return Supergun;
             }
         }
         public IEnumerable<Bullet> Shoot()

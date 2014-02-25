@@ -11,6 +11,8 @@
         {
             this.X = x;
             this.Y = y;
+            this.Damage = damage;
+            this.ShootSpeed = shootSpeed;
         }
 
         public int X

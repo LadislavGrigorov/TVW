@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    public abstract class PrimaryWeapon : Weapon
+    public class PrimaryWeapon : Weapon
     {
         int shootSpeed;
+        private static readonly PrimaryWeapon machineGun = new PrimaryWeapon(10, 2);
+        private static readonly PrimaryWeapon miniGun = new PrimaryWeapon(12, 3);
         public PrimaryWeapon(int damage, int shootSpeed)
             : base(damage)
         {
@@ -20,6 +22,22 @@
             protected set
             {
                 this.shootSpeed = value;
+            }
+        }
+
+        public PrimaryWeapon Machinegun
+        {
+            get
+            {
+                return  machineGun;
+            }
+        }
+
+        public PrimaryWeapon Minigun
+        {
+            get
+            {
+                return  miniGun;
             }
         }
 

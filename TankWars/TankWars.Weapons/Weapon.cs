@@ -2,7 +2,7 @@
 {
     public abstract class Weapon
     {
-        int damage;
+        private int damage;
 
         public Weapon(int damage)
         {
