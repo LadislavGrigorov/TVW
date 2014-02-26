@@ -24,7 +24,6 @@
 
         }
 
-        public override int Speed { get; protected set; }
 
         public bool IsInvisible { get; set; }
 

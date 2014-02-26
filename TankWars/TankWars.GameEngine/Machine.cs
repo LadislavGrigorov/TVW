@@ -100,7 +100,7 @@
         }
 
         // each machine implements it own speed
-        public abstract int Speed { get; protected set; }
+        public int Speed { get; protected set; }
 
         // machine changes position oly with this method.
         public virtual void Move(int x, int y)

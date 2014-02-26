@@ -20,8 +20,6 @@
             //TODO: Initialize guns
         }
 
-        public override int Speed { get; protected set; }
-
         
     }
 }
