@@ -32,7 +32,6 @@ namespace TeamWork
             
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("starwars.wav");
             player.PlayLooping();
-            //System.Threading.Thread.Sleep(5000);
 
             PartEmitter.Initializing();
 
@@ -53,7 +52,6 @@ namespace TeamWork
         {
             if (Console.KeyAvailable)
             {
-                
                 ConsoleKeyInfo pressedKey = Console.ReadKey(true);
                 while (Console.KeyAvailable)
                 {
