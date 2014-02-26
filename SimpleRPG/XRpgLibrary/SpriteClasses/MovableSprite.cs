@@ -20,6 +20,7 @@
         private float rotationAngle = 0.00f;
         private float speed = DefaultSpeed;
         private bool isActive = false;
+        private Direction direction = Direction.Up;
         #endregion
 
         #region Constructor
@@ -27,10 +28,30 @@
         {
             this.tileset = tileset;
             this.tile = tile;
+            this.isActive = true;
+            this.rotationAngle = 0.0f;
+            this.speed = DefaultSpeed;
+            this.direction = Direction.Up;
         }
         #endregion
 
         #region Property
+        public Tileset Tileset
+        {
+            get
+            {
+                return this.tileset;
+            }
+        }
+
+        public Tile Tile
+        {
+            get
+            {
+                return this.tile;
+            }
+        }
+
         public int Width
         {
             get 
@@ -69,6 +90,7 @@
 
             set
             {
+
                 this.position = value;
             }
         }
@@ -94,11 +116,13 @@
         #region Method 
         public void Update(GameTime gameTime)
         {
-            //if (this.isActive)
-            //    // TODO
+            if (this.isActive)
+            {
+
+            }
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(
                 this.tileset.Texture,

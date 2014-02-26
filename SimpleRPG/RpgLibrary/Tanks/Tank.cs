@@ -1,9 +1,11 @@
-﻿namespace TankWars.Tanks
+﻿namespace TankWarsLibrary.Tanks
 {
     using System;
     using System.Collections.Generic;
     using TankWars.Common;
+    using TankWars.Tanks;
     using TankWars.Weapons;
+    using TankWarsLibrary.Common;
 
     public abstract class Tank : Machine
     {

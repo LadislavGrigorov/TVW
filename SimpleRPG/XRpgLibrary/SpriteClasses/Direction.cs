@@ -1,4 +1,4 @@
-﻿namespace XTWLibrary.SpriteClasses
+﻿namespace XTankWarsLibrary.SpriteClasses
 {
     public enum Direction
     {

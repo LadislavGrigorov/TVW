@@ -1,8 +1,9 @@
-﻿namespace TankWars.Engine
+﻿namespace TankWarsLibrary.Engine
 {
     using System;
-    using TankWars.Tanks;
     using TankWars.Common;
+    using TankWarsLibrary.Tanks;
+
     public class TankFactory
     {
         public SwinTank CreateSwimTank(string name, int x, int y)
