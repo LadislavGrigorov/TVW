@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TankWars.Tanks;
-using TankWars.Common;
-
-namespace TankWars.Engine
+﻿namespace TankWars.Engine
 {
+    using System;
+    using TankWars.Tanks;
+    using TankWars.Common;
     public class TankFactory
     {
         public SwinTank CreateSwimTank(string name, int x, int y)
