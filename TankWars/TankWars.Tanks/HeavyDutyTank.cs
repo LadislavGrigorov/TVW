@@ -17,7 +17,8 @@
             : base(name, position, ARMOUR, ENERGY, HEALTH, SPEED)
         {
 
-            //TODO: Initialize guns
+            this.PrimaryGun = new Megagun();
+            this.SpecialGun = new OneShot();
         }
 
         

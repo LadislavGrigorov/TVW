@@ -23,7 +23,8 @@
             this.SwimSpeed = SWIM_SPEED;
             this.IsSwimming = false;
             this.OxigenLevel = MAX_OXIGEN;
-            //TODO: Initialize guns
+            this.PrimaryGun = new Megagun();
+            this.SpecialGun = new SuperShot();
         }
 
         public bool IsSwimming { get; set; }
