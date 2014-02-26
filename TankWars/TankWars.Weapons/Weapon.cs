@@ -1,6 +1,6 @@
 ﻿namespace TankWars.Weapons
 {
-    public abstract class Weapon
+    public abstract class Weapon : IShootSpeed
     {
         private int damage;
         private int shootSpeed;
