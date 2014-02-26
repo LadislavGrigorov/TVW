@@ -40,17 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventHandlers.cs" />
-    <Compile Include="IlligalOperationException.cs" />
     <Compile Include="ItemPosition.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TankWars.Player\TankWars.Player.csproj">
-      <Project>{4c3d3c43-5dee-4727-ac07-6fd77a5dab06}</Project>
-      <Name>TankWars.Player</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
