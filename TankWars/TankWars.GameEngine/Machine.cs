@@ -13,6 +13,8 @@
 
         private int health;
 
+        public event MachineDestroyedHandler Destroyed;
+
         public Machine(string name, ItemPosition position)
         {
             this.Name = name;
@@ -109,6 +111,26 @@
             this.position.Y += y;
             //this.Position = new ItemPosition(this.Position.X + x, this.Position.Y + y);   //Optional if property Set is used.
         }
+        public bool IsDestroyed()
+        {
+            return this.Health == 0;
+        }
+        public virtual void TakeDamage(int damage)
+        {
+            if (damage < this.Armour)
+            {
+                // Damage too small to penetrate the armour
+                return;
+            }
 
+            int newHealth = this.Health - damage + this.Armour;
+
+            if (newHealth <= 0)
+            {
+                Destroyed(this, EventArgs.Empty);
+                newHealth = 0;
+            }
+            this.Health = newHealth;
+        }
     }
 }
