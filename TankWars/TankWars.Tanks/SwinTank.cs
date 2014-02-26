@@ -26,8 +26,6 @@
             //TODO: Initialize guns
         }
 
-        public override int Speed { get; protected set; }
-
         public bool IsSwimming { get; set; }
 
         public int SwimSpeed { get; private set; }

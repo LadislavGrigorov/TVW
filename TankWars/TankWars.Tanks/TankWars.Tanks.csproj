@@ -53,6 +53,10 @@
       <Project>{7cb00b1b-cf91-4a0f-8741-b3ba5918af7c}</Project>
       <Name>TankWars.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TankWars.Player\TankWars.Player.csproj">
+      <Project>{4c3d3c43-5dee-4727-ac07-6fd77a5dab06}</Project>
+      <Name>TankWars.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TankWars.Weapons\TankWars.Weapons.csproj">
       <Project>{ef4d7aa8-0a48-4738-bf6d-4953d6264d57}</Project>
       <Name>TankWars.Weapons</Name>
