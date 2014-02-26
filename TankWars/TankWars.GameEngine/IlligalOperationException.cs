@@ -1,8 +1,8 @@
 ﻿namespace TankWars.GameEngine
 {
     using System;
-
-    class IlligalOperationException : ApplicationException
+   
+    public class IlligalOperationException : ApplicationException
     {
         public IlligalOperationException(string message)
             : base()
@@ -16,6 +16,5 @@
 
         }
 
-       
     }
 }
