@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EF4D7AA8-0A48-4738-BF6D-4953D6264D57}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TankWars.Weapons</RootNamespace>
     <AssemblyName>TankWars.Weapons</AssemblyName>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,10 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="IShootSpeed.cs" />
+    <Compile Include="Megagun.cs" />
+    <Compile Include="Minigun.cs" />
+    <Compile Include="OneShot.cs" />
     <Compile Include="PrimaryWeapon.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondaryWeapon.cs" />
+    <Compile Include="SuperShot.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
   <ItemGroup>

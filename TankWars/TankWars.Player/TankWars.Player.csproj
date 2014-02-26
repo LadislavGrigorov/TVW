@@ -39,8 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IlligalOperationException.cs" />
+    <Compile Include="IPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TankWars.GameEngine\TankWars.Common.csproj">
+      <Project>{7cb00b1b-cf91-4a0f-8741-b3ba5918af7c}</Project>
+      <Name>TankWars.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers.cs" />
     <Compile Include="ItemPosition.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="Machine.cs" />

@@ -14,17 +14,12 @@
         private const int ENERGY = 500;
 
         public HeavyDutyTank(string name, ItemPosition position)
-            : base(name, position)
+            : base(name, position, ARMOUR, ENERGY, HEALTH, SPEED)
         {
-            this.InitialArmour = ARMOUR;
-            this.InitialEnergy = ENERGY;
-            this.initialHealth = HEALTH;
-            this.Speed = SPEED;
-            // TODO: Inicialize guns
 
+            this.PrimaryGun = new Megagun();
+            this.SpecialGun = new OneShot();
         }
-
-        public override int Speed { get; protected set; }
 
         
     }
