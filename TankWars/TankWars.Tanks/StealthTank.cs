@@ -20,7 +20,8 @@
             this.IsInvisible = false;
             this.InvisibilityDuration = INVISIBILITY_DURATION;
             this.Energy = InitialEnergy;
-            //TODO: Initialize guns
+            this.PrimaryGun = new Minigun();
+            this.SpecialGun = new SuperShot();
 
         }
 

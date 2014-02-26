@@ -19,5 +19,7 @@
         {
             return new StealthTank(name, new ItemPosition(x, y));
         }
+
+        //TODO: add players inicialization here
     }
 }
