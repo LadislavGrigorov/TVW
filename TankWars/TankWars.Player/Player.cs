@@ -1,6 +1,7 @@
 ﻿namespace TankWars.Player
 {
     using System;
+    
     public class Player : IPlayer
     {
         private string name;
