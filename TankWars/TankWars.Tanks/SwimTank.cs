@@ -1,11 +1,9 @@
-﻿namespace TankWarsLibrary.Tanks
+﻿namespace TankWars.Tanks
 {
     using System;
     using System.Collections.Generic;
     using TankWars.Common;
-    using TankWars.Tanks;
     using TankWars.Weapons;
-    using TankWarsLibrary.Tanks;
 
     public class SwinTank : Tank, ISwim
     {

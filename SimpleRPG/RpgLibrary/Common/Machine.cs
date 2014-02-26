@@ -1,6 +1,8 @@
-﻿namespace TankWars.Common
+﻿namespace TankWarsLibrary.Common
 {
     using System;
+    using TankWars.Common;
+
     public abstract class Machine : IMovable
     {
         private string name;

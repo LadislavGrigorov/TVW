@@ -15,6 +15,7 @@
         private float speed;
         private float zoom;
         private Rectangle viewportRectangle;
+        private bool lockToPlayer = true;
         #endregion
 
         #region Constructors
@@ -33,6 +34,26 @@
         #endregion
 
         #region Properties
+        public Matrix Transformation
+        {
+            get
+            {
+                return Matrix.CreateScale(zoom) *
+                    Matrix.CreateTranslation(new Vector3(-Position, 0f));
+            }
+        }
+
+        public Rectangle ViewportRectangle
+        {
+            get
+            {
+                return new Rectangle(
+                    viewportRectangle.X,
+                    viewportRectangle.Y,
+                    viewportRectangle.Width,
+                    viewportRectangle.Height);
+            }
+        }
 
         public Vector2 Position
         {
@@ -67,35 +88,36 @@
         #region Methods
         public void Update(GameTime gameTime)
         {
-            Vector2 moveDirection = Vector2.Zero;
-
-            if (InputHandler.IsKeyDown(Keys.Left))
+            if (!lockToPlayer)
             {
-                moveDirection.X = -this.speed;
-            }
-            else if (InputHandler.IsKeyDown(Keys.Right))
-            {
-                moveDirection.X = this.speed;
-            }
+                Vector2 moveDirection = Vector2.Zero;
 
-            if (InputHandler.IsKeyDown(Keys.Up))
-            {
-                moveDirection.Y = -this.speed;
-            }
-            else if (InputHandler.IsKeyDown(Keys.Down))
-            {
-                moveDirection.Y = this.speed;
-            }
+                if (InputHandler.IsKeyDown(Keys.Left))
+                {
+                    moveDirection.X = -this.speed;
+                }
+                else if (InputHandler.IsKeyDown(Keys.Right))
+                {
+                    moveDirection.X = this.speed;
+                }
 
-            // Gives equal speed by diagonal.
-            if (moveDirection != Vector2.Zero)
-            {
-                moveDirection.Normalize();
+                if (InputHandler.IsKeyDown(Keys.Up))
+                {
+                    moveDirection.Y = -this.speed;
+                }
+                else if (InputHandler.IsKeyDown(Keys.Down))
+                {
+                    moveDirection.Y = this.speed;
+                }
+
+                // Gives equal speed by diagonal.
+                if (moveDirection != Vector2.Zero)
+                {
+                    moveDirection.Normalize();
+                    this.position += moveDirection * this.speed;
+                    this.LockCamera();
+                }
             }
-
-            this.position += moveDirection * this.speed;
-
-            this.LockCamera();
         }
 
         /// <summary> Locks the camera in side map borders. </summary>

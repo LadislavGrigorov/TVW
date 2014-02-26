@@ -1,9 +1,7 @@
-﻿namespace TankWars.Tanks
+﻿namespace TankWarsLibrary.Tanks
 {
     using System;
-    using System.Collections.Generic;
     using TankWars.Common;
-    using TankWars.Weapons;
 
     public class HeavyDutyTank : Tank
     {
@@ -18,8 +16,6 @@
         {
 
             //TODO: Initialize guns
-        }
-
-        
+        }        
     }
 }
