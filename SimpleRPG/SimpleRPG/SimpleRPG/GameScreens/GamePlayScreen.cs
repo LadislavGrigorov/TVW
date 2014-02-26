@@ -43,7 +43,7 @@
                 null, 
                 null, 
                 null, 
-                Matrix.Identity);
+                this.player.Camera.Transformation);
 
             this.map.Draw(this.GameRef.SpriteBatch, this.player.Camera);
             base.Draw(gameTime);

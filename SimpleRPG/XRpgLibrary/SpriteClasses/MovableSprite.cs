@@ -8,10 +8,11 @@
 
     public class MovableSprite
     {
-        #region Field 
+        #region Field
         private const float MaxSpeed = 16.0f;
         private const float MinSpeed = 1.00f;
         private const float DefaultSpeed = 2.0f;
+        private const float RotationSpeed = MathHelper.Pi / 60;
 
         private Tileset tileset;
         private Tile tile;
@@ -19,8 +20,9 @@
         private Vector2 velocity;
         private float rotationAngle = 0.00f;
         private float speed = DefaultSpeed;
-        private bool isActive = false;
+        private bool isRotating = false;
         private Direction direction = Direction.Up;
+        private Direction formerDirection;
         #endregion
 
         #region Constructor
@@ -28,14 +30,53 @@
         {
             this.tileset = tileset;
             this.tile = tile;
-            this.isActive = true;
+            this.isRotating = true;
             this.rotationAngle = 0.0f;
             this.speed = DefaultSpeed;
             this.direction = Direction.Up;
+            this.formerDirection = Direction.Up;
         }
         #endregion
 
         #region Property
+        public float RotationAngle
+        {
+            get
+            {
+                return this.rotationAngle;
+            }
+            set
+            {
+                this.rotationAngle = value;
+            }
+        }
+
+        public Direction Direction
+        {
+            get
+            {
+                return this.direction;
+            }
+
+            set
+            {
+                this.direction = value;
+            }
+        }
+
+        public bool IsRotating
+        {
+            get
+            {
+                return this.isRotating;
+            }
+
+            set
+            {
+                this.isRotating = value;
+            }
+        }
+
         public Tileset Tileset
         {
             get
@@ -54,38 +95,38 @@
 
         public int Width
         {
-            get 
+            get
             {
-                return this.tileset.TileWidth; 
+                return this.tileset.TileWidth;
             }
         }
 
         public int Height
         {
-            get 
+            get
             {
-                return this.tileset.TileHeight; 
+                return this.tileset.TileHeight;
             }
         }
 
         public float Speed
         {
-            get 
+            get
             {
-                return this.speed; 
+                return this.speed;
             }
 
-            set 
+            set
             {
-                this.speed = MathHelper.Clamp(this.speed, MinSpeed, MaxSpeed); 
+                this.speed = MathHelper.Clamp(this.speed, MinSpeed, MaxSpeed);
             }
         }
 
         public Vector2 Position
         {
-            get 
+            get
             {
-                return this.position; 
+                return this.position;
             }
 
             set
@@ -97,9 +138,9 @@
 
         public Vector2 Velocity
         {
-            get 
+            get
             {
-                return this.velocity; 
+                return this.velocity;
             }
 
             set
@@ -113,11 +154,12 @@
         }
         #endregion
 
-        #region Method 
+        #region Method
         public void Update(GameTime gameTime)
         {
-            if (this.isActive)
+            if (this.isRotating)
             {
+                Matrix rotMatrix = Matrix.CreateRotationZ(this.rotationAngle);
 
             }
         }
@@ -126,9 +168,12 @@
         {
             spriteBatch.Draw(
                 this.tileset.Texture,
-                this.position,
+                new Rectangle((int)this.position.X, (int)this.position.Y, Engine.TileWidth, Engine.TileHeight),
                 this.tileset.SourceRectangle[this.tile.TileIndex],
-                Color.White);
+                Color.White,
+                this.rotationAngle,
+                new Vector2(Engine.TileWidth / 2, Engine.TileHeight / 2),
+                SpriteEffects.None, 0);
         }
 
         public void LockToMap()
@@ -136,7 +181,6 @@
             this.position.X = MathHelper.Clamp(this.position.X, 0, TileMap.WidthInPixels - this.Width);
             this.position.Y = MathHelper.Clamp(this.position.Y, 0, TileMap.HeightInPixels - this.Height);
         }
-
         #endregion
     }
 }

@@ -4,6 +4,7 @@
     using System.Linq;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
+    using XTankWarsLibrary.SpriteClasses;
 
     public class Camera
     {
@@ -34,12 +35,23 @@
         #endregion
 
         #region Properties
+        public bool LockToPlayer
+        {
+            get
+            {
+                return this.lockToPlayer;
+            }
+            set
+            {
+                this.lockToPlayer = value;
+            }
+        }
+
         public Matrix Transformation
         {
             get
             {
-                return Matrix.CreateScale(zoom) *
-                    Matrix.CreateTranslation(new Vector3(-Position, 0f));
+                return Matrix.CreateScale(this.zoom) * Matrix.CreateTranslation(new Vector3(-this.position, 0f));
             }
         }
 
@@ -129,6 +141,20 @@
                 new Vector2(
                     TileMap.WidthInPixels - this.viewportRectangle.Width, 
                     TileMap.HeightInPixels - this.viewportRectangle.Height));
+        }
+
+        public void LockCameraToPlayer(MovableSprite sprite)
+        {
+            position.X = (sprite.Position.X + sprite.Width / 2) * zoom
+                            - (viewportRectangle.Width / 2);
+            position.Y = (sprite.Position.Y + sprite.Height / 2) * zoom
+                            - (viewportRectangle.Height / 2);
+            LockCamera();
+        }
+
+        public void ToggleCameraMode()
+        {
+            this.lockToPlayer = this.lockToPlayer ? false : true;
         }
         #endregion
     }

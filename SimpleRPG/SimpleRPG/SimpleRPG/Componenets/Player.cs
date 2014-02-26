@@ -9,6 +9,7 @@
     using XTankWarsLibrary.SpriteClasses;
     using XTankWarsLibrary.TileEngine;
     using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
 
     public class Player
     {
@@ -61,6 +62,73 @@
         {
             this.camera.Update(gameTime);
             this.tank.Update(gameTime);
+
+            Matrix rotMatrix = new Matrix();
+            Vector2 motion;
+
+            if (InputHandler.IsKeyDown(Keys.W))
+            {             
+                this.tank.IsRotating = true;
+                this.tank.Direction = Direction.Up;
+                this.tank.Velocity = new Vector2(0, -1);
+                rotMatrix = Matrix.CreateRotationZ(this.tank.RotationAngle);
+
+            }
+            else if (InputHandler.IsKeyDown(Keys.S))
+            {                
+                this.tank.IsRotating = true;
+                this.tank.Direction = Direction.Down;
+                this.tank.Velocity = new Vector2(0, 1);
+                rotMatrix = Matrix.CreateRotationZ(this.tank.RotationAngle);
+            }
+
+            if (InputHandler.IsKeyDown(Keys.A))
+            {
+                this.tank.IsRotating = true;
+                this.tank.Direction = Direction.Left;
+                this.tank.Velocity = new Vector2(-1, 0);
+                rotMatrix = Matrix.CreateRotationZ(this.tank.RotationAngle);
+            }
+            else if (InputHandler.IsKeyDown(Keys.D))
+            {
+                this.tank.IsRotating = true;
+                this.tank.Direction = Direction.Right;
+                this.tank.Velocity = new Vector2(1, 0);
+                rotMatrix = Matrix.CreateRotationZ(this.tank.RotationAngle);
+            }
+
+            if (this.tank.IsRotating)
+            {
+                this.tank.Velocity.Normalize();
+                motion = Vector2.Transform(this.tank.Velocity, rotMatrix);
+
+                this.tank.Position += motion * this.tank.Speed;
+                this.tank.LockToMap();
+
+                if (this.camera.LockToPlayer)
+                {
+                    this.camera.LockCameraToPlayer(this.tank);
+                }
+
+                this.tank.IsRotating = false;
+            }
+
+            if (InputHandler.IsKeyReleased(Keys.F))
+            {
+                this.camera.ToggleCameraMode();
+                if (this.camera.LockToPlayer)
+                {
+                    this.camera.LockCameraToPlayer(this.tank);
+                }
+            }
+
+            if (this.camera.LockToPlayer)
+            {
+                if (InputHandler.IsKeyReleased(Keys.C))
+                {
+                    this.camera.LockCameraToPlayer(this.tank);
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
